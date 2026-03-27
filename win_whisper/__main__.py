@@ -14,7 +14,7 @@ _DEFAULTS = {
 def main() -> None:
     os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
 
-    from . import BASE_DIR
+    from win_whisper import BASE_DIR
 
     config_path = BASE_DIR / "config.json"
     if config_path.exists():
@@ -25,7 +25,7 @@ def main() -> None:
         with open(config_path, "w", encoding="utf-8") as f:
             json.dump(config, f, indent=2)
 
-    from .app import App
+    from win_whisper.app import App
     App(
         model_size=config["model"],
         hotkey=config["hotkey"],
