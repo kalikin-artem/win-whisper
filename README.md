@@ -45,7 +45,8 @@ On first run, a `config.json` file is created next to the executable:
   "model": "base",
   "hotkey": "f9",
   "paste_hotkey": "ctrl+v",
-  "language": null
+  "language": null,
+  "device": "cpu"
 }
 ```
 
@@ -54,7 +55,8 @@ On first run, a `config.json` file is created next to the executable:
 | `model`        | Whisper model size — see [Models](#-models) below                          | `"base"`   |
 | `hotkey`       | Key to hold while speaking                                                 | `"f9"`     |
 | `paste_hotkey` | Key combination used to paste the text                                     | `"ctrl+v"` |
-| `language`     | Force a specific language (`"en"`, `"ua"`, etc.) or `null` for auto-detect | `null`     |
+| `language`     | Force a specific language (`"en"`, `"uk"`, etc.) or `null` for auto-detect | `null`     |
+| `device`       | Inference device: `"cpu"` or `"cuda"` for NVIDIA GPU                       | `"cpu"`    |
 
 Edit the file and restart the app to apply changes.
 
@@ -107,11 +109,11 @@ This happens because the app is not yet signed with a certificate. It is safe to
 
 ---
 
-| Problem               | Fix                                                                                       |
-| --------------------- | ----------------------------------------------------------------------------------------- |
-| Nothing happens       | Check `win-whisper.log` next to the executable                                            |
-| "No speech"           | Speak louder or hold longer. Check your default mic in Windows Sound settings             |
-| Want GPU acceleration | In `config.json` this isn't available yet — see `win_whisper/engine.py` to switch to CUDA |
+| Problem               | Fix                                                                           |
+| --------------------- | ----------------------------------------------------------------------------- |
+| Nothing happens       | Check `win-whisper.log` next to the executable                                |
+| "No speech"           | Speak louder or hold longer. Check your default mic in Windows Sound settings |
+| Want GPU acceleration | Set `"device": "cuda"` in `config.json` (requires NVIDIA GPU with CUDA)       |
 
 ## 📄 License
 

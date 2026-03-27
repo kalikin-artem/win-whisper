@@ -32,10 +32,12 @@ class App:
         hotkey: str = "f9",
         paste_hotkey: str = "ctrl+v",
         language: str | None = None,
+        device: str = "cpu",
     ) -> None:
         self._overlay = Overlay()
         self._engine = Engine()
         self._model_size = model_size
+        self._device = device
         self._hotkey = getattr(kb.Key, hotkey.lower(), kb.Key.f9)
         self._hotkey_name = hotkey.upper()
         self._paste_hotkey = paste_hotkey
@@ -121,7 +123,7 @@ class App:
         self._set_state(_LOADING)
         self._overlay.show(f"Loading {self._model_size}...")
         try:
-            self._engine.load(self._model_size)
+            self._engine.load(self._model_size, device=self._device)
             self._set_state(_READY)
             self._overlay.show("Ready", ms=2000)
         except Exception as e:
@@ -193,8 +195,8 @@ class App:
 
     def run(self) -> None:
         log.info(
-            "Win Whisper v%s  model=%s  hotkey=%s  paste=%s  lang=%s",
-            VERSION, self._model_size, self._hotkey_name,
+            "Win Whisper v%s  model=%s  device=%s  hotkey=%s  paste=%s  lang=%s",
+            VERSION, self._model_size, self._device, self._hotkey_name,
             self._paste_hotkey, self._language,
         )
         self._build_tray()

@@ -24,6 +24,9 @@ Repository = "https://github.com/kalikin-artem/win-whisper"
 [project.scripts]
 win-whisper = "win_whisper.__main__:main"
 
+[tool.setuptools]
+packages = ["win_whisper"]
+
 [tool.setuptools.dynamic]
 version = {attr = "win_whisper.VERSION"}
 

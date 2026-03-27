@@ -8,6 +8,7 @@ _DEFAULTS = {
     "hotkey": "f9",
     "paste_hotkey": "ctrl+v",
     "language": None,
+    "device": "cpu",
 }
 
 
@@ -31,6 +32,7 @@ def main() -> None:
         hotkey=config["hotkey"],
         paste_hotkey=config["paste_hotkey"],
         language=config["language"],
+        device=config["device"],
     ).run()
 
 

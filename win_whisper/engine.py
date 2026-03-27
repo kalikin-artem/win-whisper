@@ -22,11 +22,12 @@ class Engine:
     def __init__(self) -> None:
         self.model: WhisperModel | None = None
 
-    def load(self, model_size: str) -> None:
+    def load(self, model_size: str, device: str = "cpu") -> None:
         from faster_whisper import WhisperModel
 
-        log.info("Loading '%s'...", model_size)
-        self.model = WhisperModel(model_size, device="cpu", compute_type="int8")
+        compute_type = "float16" if device == "cuda" else "int8"
+        log.info("Loading '%s' on %s...", model_size, device)
+        self.model = WhisperModel(model_size, device=device, compute_type=compute_type)
         log.info("Model ready.")
 
     def record(self, stop: threading.Event) -> np.ndarray | None:
