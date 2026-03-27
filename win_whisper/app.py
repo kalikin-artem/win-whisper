@@ -8,13 +8,13 @@ import pystray
 from PIL import Image, ImageDraw, ImageEnhance
 from pynput import keyboard as kb
 
-from . import BASE_DIR, VERSION
+from . import BUNDLE_DIR, VERSION
 from .engine import Engine
 from .log import log
 from .overlay import Overlay
 from .win32 import clip_get, clip_set, focus_window, get_foreground_window, send_hotkey
 
-_ICONS_DIR = BASE_DIR / "icons"
+_ICONS_DIR = BUNDLE_DIR / "icons"
 _REPO_URL = "https://github.com/kalikin-artem/win-whisper"
 
 _READY = "ready"
