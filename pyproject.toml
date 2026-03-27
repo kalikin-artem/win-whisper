@@ -1,0 +1,32 @@
+[project]
+name = "win-whisper"
+dynamic = ["version"]
+description = "Local, offline voice-to-text for Windows. Hold a key, speak, release — text pastes into any window."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Artem Kalikin", email = "artem@kalikin.org" }]
+keywords = ["whisper", "voice", "speech-to-text", "windows"]
+
+dependencies = [
+    "faster-whisper",
+    "sounddevice",
+    "numpy",
+    "pynput",
+    "pystray",
+    "Pillow",
+]
+
+[project.urls]
+Homepage = "https://github.com/kalikin-artem/win-whisper"
+Repository = "https://github.com/kalikin-artem/win-whisper"
+
+[project.scripts]
+win-whisper = "win_whisper.__main__:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "win_whisper.VERSION"}
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"

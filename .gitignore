@@ -1,0 +1,13 @@
+win-whisper.log
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+whisper.log
+.claude
