@@ -3,7 +3,7 @@
 import sys
 from pathlib import Path
 
-VERSION = "1.0"
+VERSION = "1.0.1"
 
 if getattr(sys, "frozen", False):
     BASE_DIR = Path(sys.executable).parent
