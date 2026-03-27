@@ -1,11 +1,11 @@
 # -*- mode: python ; coding: utf-8 -*-
 """PyInstaller spec — produces a single win-whisper.exe in dist/"""
 
-import site
 from pathlib import Path
+import faster_whisper
 
-_site = Path(site.getsitepackages()[0])
-_fw_dir = _site / "faster_whisper"
+_fw_dir = Path(faster_whisper.__file__).parent
+_fw_assets = _fw_dir / "assets"
 
 a = Analysis(
     ["win_whisper/__main__.py"],
@@ -13,7 +13,7 @@ a = Analysis(
     binaries=[],
     datas=[
         ("icons", "icons"),
-        (str(_fw_dir / "assets"), "faster_whisper/assets"),
+        *([(str(_fw_assets), "faster_whisper/assets")] if _fw_assets.exists() else []),
     ],
     hiddenimports=[
         "faster_whisper",
