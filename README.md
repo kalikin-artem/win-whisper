@@ -34,6 +34,8 @@ That's it. No installation, no Python, no setup. Works fully offline after the f
 
 > 💡 Right-click the tray icon to switch models, reload, or exit.
 
+![Demo](demo.gif)
+
 ## ⚙️ Configuration
 
 On first run, a `config.json` file is created next to the executable:
@@ -88,6 +90,22 @@ python -m win_whisper
 Requires Python 3.10+ and Windows 10/11.
 
 ## ❓ Troubleshooting
+
+### Windows blocked the app
+
+When you download and run `win-whisper.exe`, Windows may show this warning:
+
+> **"Windows protected your PC"** — Microsoft Defender SmartScreen prevented an unrecognized app from starting.
+
+This happens because the app is not yet signed with a certificate. It is safe to run.
+
+**To fix it:**
+
+1. Right-click `win-whisper.exe` → **Properties**
+2. At the bottom, check **Unblock**
+3. Click **OK** — then run the app normally
+
+---
 
 | Problem               | Fix                                                                                       |
 | --------------------- | ----------------------------------------------------------------------------------------- |
