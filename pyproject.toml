@@ -20,6 +20,7 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/kalikin-artem/win-whisper"
 Repository = "https://github.com/kalikin-artem/win-whisper"
+Funding = "https://ko-fi.com/kalikin"
 
 [project.scripts]
 win-whisper = "win_whisper.__main__:main"

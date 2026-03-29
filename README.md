@@ -10,15 +10,22 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/kalikin-artem/win-whisper/releases"><img src="https://img.shields.io/github/v/release/kalikin-artem/win-whisper?label=Download&color=blue" alt="Latest release"></a>&nbsp;
+  <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D4?logo=windows" alt="Windows 10/11">&nbsp;
+  <a href="https://github.com/kalikin-artem/win-whisper/blob/main/LICENSE"><img src="https://img.shields.io/github/license/kalikin-artem/win-whisper" alt="MIT License"></a>&nbsp;
+  <a href="https://ko-fi.com/kalikin"><img src="https://img.shields.io/badge/Ko--fi-Support%20this%20project-FF5E5B?logo=ko-fi&logoColor=white" alt="Ko-fi"></a>
+</p>
+
+<p align="center">
   <a href="https://github.com/kalikin-artem/win-whisper/releases">⬇️ Download</a>&nbsp;&nbsp;·&nbsp;&nbsp;
   <a href="#how-it-works">How it works</a>&nbsp;&nbsp;·&nbsp;&nbsp;
-  <a href="#-configuration">Configuration</a>&nbsp;&nbsp;·&nbsp;&nbsp;
-  <a href="#-models">Models</a>
+  <a href="#configuration">Configuration</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="#models">Models</a>
 </p>
 
 ---
 
-## ⬇️ Getting started
+## Getting started
 
 1. Download **win-whisper.exe** from the [latest release](https://github.com/kalikin-artem/win-whisper/releases)
 2. Run it — a small icon appears in your system tray
@@ -36,7 +43,7 @@ That's it. No installation, no Python, no setup. Works fully offline after the f
 
 ![Demo](demo.gif)
 
-## ⚙️ Configuration
+## Configuration
 
 On first run, a `config.json` file is created next to the executable:
 
@@ -52,7 +59,7 @@ On first run, a `config.json` file is created next to the executable:
 
 | Option         | Description                                                                | Default    |
 | -------------- | -------------------------------------------------------------------------- | ---------- |
-| `model`        | Whisper model size — see [Models](#-models) below                          | `"base"`   |
+| `model`        | Whisper model size — see [Models](#models) below                           | `"base"`   |
 | `hotkey`       | Key to hold while speaking                                                 | `"f9"`     |
 | `paste_hotkey` | Key combination used to paste the text                                     | `"ctrl+v"` |
 | `language`     | Force a specific language (`"en"`, `"uk"`, etc.) or `null` for auto-detect | `null`     |
@@ -60,9 +67,9 @@ On first run, a `config.json` file is created next to the executable:
 
 Edit the file and restart the app to apply changes.
 
-## 🧠 Models
+## Models
 
-All models auto-detect the language (90+ supported).
+All models auto-detect the language (90+ supported). Powered by [Faster Whisper](https://github.com/SYSTRAN/faster-whisper) (CTranslate2).
 
 | Model    | Download size | Speed  | Accuracy |
 | -------- | :-----------: | :----: | :------: |
@@ -73,9 +80,28 @@ All models auto-detect the language (90+ supported).
 
 You can also switch models from the tray icon menu without editing the config.
 
-Powered by [Faster Whisper](https://github.com/SYSTRAN/faster-whisper) (CTranslate2, runs on CPU).
+## Troubleshooting
 
-## 🛠️ Run from source
+<details>
+<summary><strong>Windows SmartScreen blocked the app</strong></summary>
+
+Windows may show **"Windows protected your PC"** because the app is not code-signed. To fix:
+
+1. Right-click `win-whisper.exe` → **Properties**
+2. Check **Unblock** at the bottom → **OK**
+3. Run the app normally
+</details>
+
+| Problem               | Fix                                                                           |
+| --------------------- | ----------------------------------------------------------------------------- |
+| Nothing happens       | Check `win-whisper.log` next to the executable                                |
+| "No speech"           | Speak louder or hold longer. Check your default mic in Windows Sound settings |
+| Want GPU acceleration | Set `"device": "cuda"` in `config.json` (requires NVIDIA GPU with CUDA)       |
+
+<details>
+<summary><strong>Run from source</strong></summary>
+
+Requires Python 3.10+ and Windows 10/11.
 
 ```bash
 pip install .
@@ -88,33 +114,8 @@ Or without installing:
 pip install -r requirements.txt
 python -m win_whisper
 ```
+</details>
 
-Requires Python 3.10+ and Windows 10/11.
-
-## ❓ Troubleshooting
-
-### Windows blocked the app
-
-When you download and run `win-whisper.exe`, Windows may show this warning:
-
-> **"Windows protected your PC"** — Microsoft Defender SmartScreen prevented an unrecognized app from starting.
-
-This happens because the app is not yet signed with a certificate. It is safe to run.
-
-**To fix it:**
-
-1. Right-click `win-whisper.exe` → **Properties**
-2. At the bottom, check **Unblock**
-3. Click **OK** — then run the app normally
-
----
-
-| Problem               | Fix                                                                           |
-| --------------------- | ----------------------------------------------------------------------------- |
-| Nothing happens       | Check `win-whisper.log` next to the executable                                |
-| "No speech"           | Speak louder or hold longer. Check your default mic in Windows Sound settings |
-| Want GPU acceleration | Set `"device": "cuda"` in `config.json` (requires NVIDIA GPU with CUDA)       |
-
-## 📄 License
+## License
 
 MIT — [Artem Kalikin](mailto:artem@kalikin.org)
